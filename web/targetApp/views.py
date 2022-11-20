@@ -169,11 +169,10 @@ def add_target(request):
     return render(request, 'target/add.html', context)
 
 def list_target(request):
-    domains = Domain.objects.all().order_by('-insert_date')
     context = {
         'list_target_li': 'active',
-        'target_data_active': 'active',
-        'domains': domains}
+        'target_data_active': 'active'
+    }
     return render(request, 'target/list.html', context)
 
 
@@ -274,7 +273,7 @@ def target_summary(request, id):
 
     context['total_vul_ignore_info_count'] = low_count + \
         medium_count + high_count + critical_count
-        
+
     context['most_common_vulnerability'] = Vulnerability.objects.exclude(severity=0).filter(target_domain__id=id).values("name", "severity").annotate(count=Count('name')).order_by("-count")[:10]
 
     emails = Email.objects.filter(emails__in=ScanHistory.objects.filter(domain__id=id).distinct())
@@ -299,6 +298,8 @@ def target_summary(request, id):
     context['most_common_cve'] = CveId.objects.filter(cve_ids__in=Vulnerability.objects.filter(target_domain__id=id)).annotate(nused=Count('cve_ids')).order_by('-nused').values('name', 'nused')[:7]
     context['most_common_cwe'] = CweId.objects.filter(cwe_ids__in=Vulnerability.objects.filter(target_domain__id=id)).annotate(nused=Count('cwe_ids')).order_by('-nused').values('name', 'nused')[:7]
     context['most_common_tags'] = VulnerabilityTags.objects.filter(vuln_tags__in=Vulnerability.objects.filter(target_domain__id=id)).annotate(nused=Count('vuln_tags')).order_by('-nused').values('name', 'nused')[:7]
+
+    context['asset_countries'] = CountryISO.objects.filter(ipaddress__in=IpAddress.objects.filter(ip_addresses__in=Subdomain.objects.filter(target_domain__id=id))).annotate(count=Count('iso')).order_by('-count')
 
     return render(request, 'target/summary.html', context)
 

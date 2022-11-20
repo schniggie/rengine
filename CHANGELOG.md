@@ -1,5 +1,43 @@
 # Changelog
 
+## 1.3.3
+**Release Date: October 9, 2022**
+
+# Fixes
+- #723, Upgraded Go to 1.18.2
+
+
+## 1.3.2
+**Release Date: August 20, 2022**
+
+# Fixes
+- #683 For Filtering GF tags
+- #669 Where Directory UI had to be collapsed
+
+
+## 1.3.1
+**Release Date: August 12, 2022**
+
+# Fixes
+- Fix for #643 Downloading issue for Subdomain and Endpoints
+- Fix for #627 Too many Targets causes issues while loading datatable
+- Fix version Numbering issue
+
+
+## 1.3.0
+**Release Date: July 11, 2022**
+
+## Added
+
+- Geographic Distribution of Assets Map
+- Added WAF Detector as an optional tool in Scan Engine
+
+## Fixes
+
+- WHOIS Provider Changed
+- Fixed Dark UI Issues
+- Fix HTTPX Issue with custom Header
+
 ## 1.2.0
 **Release Date: May 27, 2022**
 

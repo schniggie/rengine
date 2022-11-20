@@ -123,12 +123,6 @@ then
   wget https://raw.githubusercontent.com/NagliNagli/BountyTricks/main/ssrf.yaml -O ~/nuclei-templates/ssrf_nagli.yaml
 fi
 
-if [ ! -f ~/nuclei-templates/ssrf_nagli.yaml ];
-then
-  echo "Downloading ssrf_nagli for Nuclei"
-  wget https://raw.githubusercontent.com/NagliNagli/BountyTricks/main/ssrf.yaml -O ~/nuclei-templates/ssrf_nagli.yaml
-fi
-
 if [ ! -d "/usr/src/github/CMSeeK" ]
 then
   echo "Cloning CMSeeK"
@@ -137,3 +131,6 @@ then
 fi
 
 exec "$@"
+
+# httpx seems to have issue, use alias instead!!!
+echo 'alias httpx="/go/bin/httpx"' >> ~/.bashrc
