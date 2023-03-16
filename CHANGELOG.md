@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.3.6
+**Release Date: March 2, 2023**
+
+- Fixed installation errors. Fixed #824, #823, #816, #809, #803, #801, #798, #797, #794, #791 .
+
+
+## 1.3.5
+**Release Date: December 29, 2022**
+
+- Fixed #769, #768, #766, #761, Thanks to, @bin-maker, @carsonchan12345, @paweloque, @opabravo
+
+
+## 1.3.4
+**Release Date: November 16, 2022**
+
+# Fixes
+- Fixed #748 , #743 , #738, #739
+
+
 ## 1.3.3
 **Release Date: October 9, 2022**
 
