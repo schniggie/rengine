@@ -60,7 +60,6 @@ else
   tput setaf 2; echo "Docker installed!!!"
 fi
 
-
 echo " "
 tput setaf 4;
 echo "#########################################################################"
@@ -69,12 +68,11 @@ echo "#########################################################################"
 if [ -x "$(command -v docker-compose)" ]; then
   tput setaf 2; echo "docker-compose already installed, skipping."
 else
-  curl -L "https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  curl -L "https://github.com/docker/compose/releases/download/v2.23.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
   chmod +x /usr/local/bin/docker-compose
   ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
   tput setaf 2; echo "docker-compose installed!!!"
 fi
-
 
 echo " "
 tput setaf 4;
@@ -92,20 +90,15 @@ tput setaf 4;
 echo "#########################################################################"
 echo "Checking Docker status"
 echo "#########################################################################"
-if systemctl is-active docker >/dev/null 2>&1; then
+if docker info >/dev/null 2>&1; then
   tput setaf 4;
   echo "Docker is running."
- elif service docker status > /dev/null 2>&1; then
-  tput setaf 4;
-  echo "Docker is running"
 else
   tput setaf 1;
   echo "Docker is not running. Please run docker and try again."
   echo "You can run docker service using sudo systemctl start docker"
   exit 1
 fi
-
-
 
 echo " "
 tput setaf 4;
